@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <caracteristics height="30" width="30" rythme="3">
-    <sources path="/icons/" ext=".gif">
+    <sources path="/icons" ext=".gif">
         <source>stop</source>
         <source>right1</source>
         <source>right2</source>

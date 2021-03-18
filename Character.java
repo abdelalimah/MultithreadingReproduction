@@ -18,8 +18,8 @@ public class Character extends JPanel implements Runnable {
     
     private Thread runner;
     private int x,y;
-    private String name;
-    private String path = "characters/";
+    private String characterDirectoryName;
+    private String charactersDirectory = "characters/";
     private int height,width;
     private Hashtable<String,Integer> sources;
     private String ext;
@@ -28,10 +28,11 @@ public class Character extends JPanel implements Runnable {
     private Image[] images;
     private XMLNode root;
     private int step = 3;
+    private String iconsDirectory;
 
     public Character(String characterName, int x, int y){
 
-        this.name = characterName;
+        this.characterDirectoryName = characterName;
         root = new XMLNode(characterName);
         this.height = root.extractIntAttribute("height");
         this.width = root.extractIntAttribute("width");
@@ -56,11 +57,13 @@ public class Character extends JPanel implements Runnable {
     }
 
     void loadImagesFromSources(){
+        XMLNode sourcesNode = root.extractChild("sources");
+        this.iconsDirectory = sourcesNode.extractAttribute("path");
         images = new Image[sources.size()];
-        for (String value : sources.keySet()) {
-            String completePath = path+name+"/icons/"+value+ext;
+        for (String actionValue : sources.keySet()) {
+            String completePath = charactersDirectory+characterDirectoryName+iconsDirectory+actionValue+ext;
             System.out.println(completePath);
-            images[sources.get(value)] = new ImageIcon(completePath).getImage();
+            images[sources.get(actionValue)] = new ImageIcon(completePath).getImage();
         }
         /**
          * sources tabel : {
