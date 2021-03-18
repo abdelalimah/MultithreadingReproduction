@@ -51,7 +51,7 @@ public class Character extends JPanel implements Runnable {
         XMLNode sourcesNode = root.extractChild("sources");
         this.ext = sourcesNode.extractAttribute("ext");
         XMLNode[] sourceChildNodes = sourcesNode.extractChildren();
-        for (int i = 0; i < sourceChildNodes.length; i++) {   
+        for (int i = 0; i < sourceChildNodes.length; i++) {  
             sources.put(sourceChildNodes[i].textValue(), i);
         }
     }

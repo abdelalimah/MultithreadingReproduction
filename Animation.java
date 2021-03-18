@@ -21,7 +21,7 @@ public class Animation extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         counter++;
-        Character shima = new Character("pingouin", e.getX(),e.getY());
+        Character shima = new Character("character1", e.getX(),e.getY());
         screen.add(shima);
         shima.start();
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <caracteristics height="30" width="30" rythme="3">
-    <sources path="/icons" ext=".gif">
+    <sources path="/icons/" ext=".gif">
         <source>stop</source>
         <source>right1</source>
         <source>right2</source>
@@ -11,8 +11,8 @@
         <source>left3</source>
     </sources>
     <actions>
-        <action iconsComposition="right1,right2,right3">goRight</action>
-        <action iconsComposition="left1,left2,left3">goLeft</action>
+        <action iconsComposition="right1,right2,right3,right4">goRight</action>
+        <action iconsComposition="left1,left2,left3,left4">goLeft</action>
         <action iconsComposition="stop">stop</action>
     </actions>
 </caracteristics>
