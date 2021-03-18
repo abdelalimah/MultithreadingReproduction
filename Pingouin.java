@@ -13,6 +13,7 @@ public class Pingouin extends JPanel implements Runnable {
     private String name;
     private String path = "resources/";
     private int height = 30,width = 30;
+    // private int height = 50,width = 50;
     private String[] sources = {"stop","left1","left2","left3","right1","right2","right3"};
     private String ext = ".gif";
     private int step = 2;

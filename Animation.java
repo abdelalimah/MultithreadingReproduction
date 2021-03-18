@@ -23,7 +23,6 @@ public class Animation extends JFrame implements MouseListener {
         counter++;
         Pingouin shima = new Pingouin("Abdel"+counter, e.getX(),e.getY());
         screen.add(shima);
-        System.out.println("m here");
         shima.start();
     }
 
