@@ -1,45 +1,30 @@
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import java.awt.*;
 import java.awt.event.*;
 
-public class Animation extends JFrame implements MouseListener {
+public class Animation extends JFrame {
 
-    private JPanel screen;
-    private int counter = 0;
     public Animation(){
-        screen = new JPanel();
-        screen.setBackground(Color.black);
-        screen.addMouseListener(this);
+        Screen screen = new Screen();
+        
+        MenuHandler menuHandler = new MenuHandler();
+        menuHandler.setScreen(screen);
+        
+        setJMenuBar(menuHandler.getMenuBar());
+
+        screen.addMouseListener(menuHandler);
+        
         setContentPane(screen);
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
         setVisible(true);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        counter++;
-        Character shima = new Character("character1", e.getX(),e.getY());
-        screen.add(shima);
-        shima.start();
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
     }
 
     public static void main(String[] args) {
