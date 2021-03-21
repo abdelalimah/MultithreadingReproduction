@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<caracteristics height="30" width="30" rythme="3">
+<caracteristics height="40" width="40" rythme="3">
     <sources path="/icons/" ext=".gif">
         <source>stop</source>
         <source>right1</source>
         <source>right2</source>
         <source>right3</source>
+        <source>right4</source>
         <source>left1</source>
         <source>left2</source>
         <source>left3</source>
+        <source>left4</source>
     </sources>
     <actions>
         <action iconsComposition="right1,right2,right3,right4">goRight</action>

@@ -21,6 +21,11 @@ public class MenuHandler implements ActionListener,MouseListener {
         character1.addActionListener(this);
         characters.add(character1);
         
+        JMenuItem character2= new JMenuItem("character2");
+        character2.setIcon(new ImageIcon("characters/character2/icons/stop.gif"));
+        character2.addActionListener(this);
+        characters.add(character2);
+        
         JMenuItem pingouin= new JMenuItem("pingouin");
         pingouin.setIcon(new ImageIcon("characters/pingouin/icons/stop.gif"));
         pingouin.addActionListener(this);

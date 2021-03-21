@@ -25,8 +25,8 @@ public class Screen extends JPanel{
         for (int i = 0; i <= 2; i++) {
             g.setColor(Color.blue);
             g.fillRect(0, hGap * (i+1), borderWidth, borderHeight);
-            g.fillRect(vGap * (i+1) , hGap * (i+1), borderWidth, borderHeight);
-            g.fillRect(vGap * (i+1) + vGap, hGap * (i+1), borderWidth, borderHeight);
+            // g.fillRect(vGap * (i+1) , hGap * (i+1), borderWidth, borderHeight);
+            // g.fillRect(vGap * (i+1) + vGap, hGap * (i+1), borderWidth, borderHeight);
         }
 
         //bottom
