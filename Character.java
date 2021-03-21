@@ -18,7 +18,7 @@ public class Character extends JPanel implements Runnable {
     
     private Thread runner;
     private int x,y;
-    private String characterDirectoryName;
+    private String characterDirectory;
     private String charactersDirectory = "characters/";
     private int height,width;
     private Hashtable<String,Integer> sources;
@@ -26,29 +26,31 @@ public class Character extends JPanel implements Runnable {
     private int rythme;
     private int whichImage = 0;
     private Image[] images;
+    XMLNode actions;
     private XMLNode root;
     private int step = 3;
     private String iconsDirectory;
 
     public Character(String characterName, int x, int y){
 
-        this.characterDirectoryName = characterName;
+        this.characterDirectory = characterName;
         root = new XMLNode(characterName);
         this.height = root.extractIntAttribute("height");
         this.width = root.extractIntAttribute("width");
         rythme = root.extractIntAttribute("rythme");
+        XMLNode sourcesNode = root.extractChild("sources");
+        actions = root.extractChild("actions");
         this.x = x;
         this.y = y;
         setLocation(x, y);
         setSize(height,width);
         this.runner = new Thread(this);
-        loadSources();
-        loadImagesFromSources();
+        loadSources(sourcesNode);
+        loadImagesFromSources(sourcesNode);
     }
 
-    void loadSources(){
+    void loadSources(XMLNode sourcesNode){
         sources = new Hashtable();
-        XMLNode sourcesNode = root.extractChild("sources");
         this.ext = sourcesNode.extractAttribute("ext");
         XMLNode[] sourceChildNodes = sourcesNode.extractChildren();
         for (int i = 0; i < sourceChildNodes.length; i++) {  
@@ -56,19 +58,17 @@ public class Character extends JPanel implements Runnable {
         }
     }
 
-    void loadImagesFromSources(){
-        XMLNode sourcesNode = root.extractChild("sources");
+    void loadImagesFromSources(XMLNode sourcesNode){
         this.iconsDirectory = sourcesNode.extractAttribute("path");
         images = new Image[sources.size()];
         for (String actionValue : sources.keySet()) {
-            String completePath = charactersDirectory+characterDirectoryName+iconsDirectory+actionValue+ext;
-            System.out.println(completePath);
+            String completePath = charactersDirectory+characterDirectory+iconsDirectory+actionValue+ext;
             images[sources.get(actionValue)] = new ImageIcon(completePath).getImage();
         }
         /**
-         * sources tabel : {
-         * "left1": 1
-         * "left2": 2
+         * sources table : {
+         * "right1": 0
+         * "right2": 1
          * }
          */
     }
@@ -78,11 +78,9 @@ public class Character extends JPanel implements Runnable {
     }
 
     void characterAction(String actionName){
-        XMLNode actions = root.extractChild("actions");
-        
         String iconsComposition[] = null;
 
-        for (XMLNode action : actions.extractChildren()) {
+        for (XMLNode action : this.actions.extractChildren()) {
             if(actionName.equals(action.textValue())){
                 iconsComposition = action.extractAttribute("iconsComposition").split(",");
             }
@@ -91,8 +89,8 @@ public class Character extends JPanel implements Runnable {
         for (int i = 0; i < rythme; i++) {
             if(iconsComposition != null){
                 for (int j = 0; j < iconsComposition.length ; j++) {
-                    int getCorrespondantIconIndexInSources = sources.get(iconsComposition[j]);
-                    whichImage = getCorrespondantIconIndexInSources;
+                    int correspondantIconIndexInSources = sources.get(iconsComposition[j]);
+                    whichImage = correspondantIconIndexInSources;
                     if("goRight".equals(actionName)){
                         x+=step;
                     }else {
