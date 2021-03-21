@@ -1,3 +1,5 @@
+package project;
+
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -20,7 +22,8 @@ public class XMLNode {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
         try{
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse("characters/"+source+"/index.xml");
+            System.out.println("project/characters/"+source+"/index.xml");
+            Document document = builder.parse("project/characters/"+source+"/index.xml");
             this.node = document.getDocumentElement();
         }catch(Exception e){
             System.out.println(e.getMessage());

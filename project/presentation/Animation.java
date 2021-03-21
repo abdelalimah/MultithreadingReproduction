@@ -1,3 +1,5 @@
+package project.presentation;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -11,15 +13,14 @@ import java.awt.event.*;
 public class Animation extends JFrame {
 
     public Animation(){
-        Screen screen = new Screen();
+        this.setLayout(null);
+        MenuBar menuBar = new MenuBar();
         
-        MenuHandler menuHandler = new MenuHandler();
-        menuHandler.setScreen(screen);
+        Screen screen = new Screen(menuBar);
         
-        setJMenuBar(menuHandler.getMenuBar());
+        
+        setJMenuBar(menuBar.getMenuBar());
 
-        screen.addMouseListener(menuHandler);
-        
         setContentPane(screen);
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);

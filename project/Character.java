@@ -1,3 +1,5 @@
+package project;
+
 import java.util.Hashtable;
 import java.util.Set;
 import java.util.Vector;
@@ -62,7 +64,8 @@ public class Character extends JPanel implements Runnable {
         this.iconsDirectory = sourcesNode.extractAttribute("path");
         images = new Image[sources.size()];
         for (String actionValue : sources.keySet()) {
-            String completePath = charactersDirectory+characterDirectory+iconsDirectory+actionValue+ext;
+            String completePath = "project/"+charactersDirectory+characterDirectory+iconsDirectory+actionValue+ext;
+            System.out.println(completePath);
             images[sources.get(actionValue)] = new ImageIcon(completePath).getImage();
         }
         /**

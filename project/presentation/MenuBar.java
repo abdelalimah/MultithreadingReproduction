@@ -1,20 +1,23 @@
-import java.awt.event.ActionEvent;
+package project.presentation;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
 
-public class MenuHandler implements ActionListener,MouseListener {
-    private JMenuBar menuBar;
+
+public class MenuBar implements ActionListener {
+    
     private String chosenCharacter = "pingouin";
-    JPanel screen;
-
-    public MenuHandler(){
+    private JMenuBar menuBar;
+    
+    
+    public MenuBar(){
         this.menuBar = new JMenuBar();
-        JMenu characters = new JMenu("Characters");
         
+        JMenu characters = new JMenu("Characters");
 
         JMenuItem character1= new JMenuItem("character1");
         character1.setIcon(new ImageIcon("characters/character1/icons/stop.gif"));
@@ -37,44 +40,14 @@ public class MenuHandler implements ActionListener,MouseListener {
     @Override
     public void actionPerformed(ActionEvent e){
         chosenCharacter = (((JMenuItem)e.getSource()).getText());
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        Character shima = new Character(chosenCharacter, e.getX(),e.getY());
-        screen.add(shima);
-        shima.start();
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
+        System.out.println(chosenCharacter);
     }
 
     public String getChosenCharacter() {
         return chosenCharacter;
     }
-
-    public void setChosenCharacter(String chosenCharacter) {
-        this.chosenCharacter = chosenCharacter;
-    }
-
     public JMenuBar getMenuBar() {
         return menuBar;
     }
-
-    public void setScreen(JPanel screen) {
-        this.screen = screen;
-    }
+    
 }
